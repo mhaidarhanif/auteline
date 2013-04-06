@@ -18,16 +18,18 @@ Name:   M Haidar Hanif
 ID:     Task Five
 Create: Object-oriented application with UML
 Docs:   Java™ How to Program, Seventh Edition & OOAD_Example
-Chap:   2 & 3 Software Engineering Case Study
-Page:   63 - 522
+Chap:   2 & 3. Software Engineering Case Study
+Appx:   M. ATM Case Study Code
+Page:   63 - 522 & 1624 - 1648
 Date:   April 2013
 ```
 
 ### Objectives
 
-- GUI application
 - Automated Teller Machine
 - Bank database
+- SQL queries
+- GUI application
 
 ### Project Structure
 
@@ -130,10 +132,11 @@ The following steps describe the actions that occur when the user enters 3 to ma
 Diagrams
 --------
 
-1. Class Diagram
-2. Object Diagram
-3. Use Case Diagram
+1. Use Case Diagram
+2. Class Diagram
+3. Object Diagram
 4. Sequence Diagram
+5. Activity Diagram
 
 Attached in [diagrams](/diagrams).
 
