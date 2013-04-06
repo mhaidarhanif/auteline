@@ -51,6 +51,15 @@ Learning Step
 1. Object-Oriented Programming
 2. Java Programming Language
 3. Unified Modeling Language
+   - Diagram
+   - Class
+   - Object
+   - Use Case
+   - Sequence
+   - Collaboration
+   - State Chart
+   - Activity
+   - Deployment
 4. GUI Application
 5. SQL Database
 
@@ -116,6 +125,8 @@ The following steps describe the actions that occur when the user enters 3 to ma
 4. The screen displays a message telling the user to insert a deposit envelope into the deposit slot.
 5. If the deposit slot receives a deposit envelope within two minutes, the ATM credits the deposit amount to the user’s account in the bank’s database (i.e., adds the deposit amount to the user’s account balance). [Note: This money is not immediately available for withdrawal. The bank first must physically verify the amount of cash in the deposit envelope, and any checks in the envelope must clear (i.e., money must be transferred from the check writer’s account to the check recipient’s account). When either of these events occurs, the bank appropriately updates the user’s balance stored in its database. This occurs independently of the ATM system.] If the deposit slot does not receive a deposit envelope within this time period, the screen displays a message that the system has canceled the transaction due to inactivity. The ATM then displays the main menu and waits for user input.
 
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
 Diagrams
 --------
 
@@ -124,7 +135,7 @@ Diagrams
 3. Use Case Diagram
 4. Sequence Diagram
 
-*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+Attached in [diagrams](/diagrams).
 
 Specification
 -------------
