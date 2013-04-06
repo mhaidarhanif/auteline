@@ -1,0 +1,33 @@
+# Custom personal files
+docs/
+misc/
+tmp/
+*.swp
+*.jar
+
+# Backup files
+*.un~
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+
+# Local configuration files
+local.properties
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Eclipse project files
+.classpath
+.project
+.settings
+.metadata
+
