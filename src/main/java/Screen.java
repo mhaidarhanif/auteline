@@ -26,4 +26,14 @@ public class Screen {
     System.out.printf("$%,.2f", amount);
   }
 
+  // get message with a carriage return
+  public String getMessage(String message) {
+    return message;
+  }
+
+  // get dollar amount
+  public String getDollarAmount(double amount) {
+    return String.format("$%,.2f", amount);
+  }
+
 }
