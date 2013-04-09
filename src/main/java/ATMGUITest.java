@@ -1,3 +1,5 @@
+package main.java;
+
 /**
  * SMTI06, 54411850, M Haidar Hanif
  * Task Five: Automated Teller Machine
@@ -11,8 +13,8 @@ public class ATMGUITest {
 
   // main method creates and runs the ATM in GUI mode
   public static void main(String[] args) {
-    ATM bankATM = new ATM();
-    bankATM.run();
+    ATM realATM = new ATM();
+    realATM.run();
   }
 
 }

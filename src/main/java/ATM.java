@@ -1,3 +1,5 @@
+package main.java;
+
 /**
  * SMTI06, 54411850, M Haidar Hanif
  * Task Five: Automated Teller Machine
@@ -40,21 +42,21 @@ public class ATM {
     while (true) {
       // loop while user is not yet authenticated
       while (!userAuthenticated) {
-        screen.displayMessageLine("\nWelcome!");
+        screen.displayMessageLine("\n[i] Welcome to Auteline Bank ATM!");
         authenticateUser(); // authenticate user
       } // end while
       performTransactions(); // user is now authenticated
       userAuthenticated = false; // reset before next ATM session
       currentAccountNumber = 0; // reset before next ATM session
-      screen.displayMessageLine("\nThank you! Goodbye!");
+      screen.displayMessageLine("\n[i] Thank you for banking with Auteline Bank!");
     }
   }
 
   // attempts to authenticate user against database
   private void authenticateUser() {
-    screen.displayMessage("\nPlease enter your account number: ");
+    screen.displayMessage("\n[?] Please enter your account number: ");
     int accountNumber = keypad.getInput(); // input account number
-    screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
+    screen.displayMessage("\n[?] Enter your PIN: "); // prompt for PIN
     int pin = keypad.getInput(); // input PIN
 
     // set userAuthenticated to boolean value returned by database
@@ -63,7 +65,7 @@ public class ATM {
     if (userAuthenticated) {
       currentAccountNumber = accountNumber;
     } else {
-      screen.displayMessageLine("Invalid account number or PIN. Please try again.");
+      screen.displayMessageLine("[!] Invalid account number or PIN. Please try again.");
     }
   }
 
@@ -73,8 +75,8 @@ public class ATM {
     // local variable to store transaction currently being processed
     Transaction currentTransaction = null;
     boolean userExited = false; // user has not chosen to exit
-    // loop while user has not chosen option to exit system
 
+    // loop while user has not chosen option to exit system
     while (!userExited) {
       // show main menu and get user selection
       int mainMenuSelection = displayMainMenu();
@@ -88,11 +90,11 @@ public class ATM {
           currentTransaction.execute(); // execute transaction
           break;
         case EXIT: // user chose to terminate session
-          screen.displayMessageLine("\nExiting the system...");
+          screen.displayMessageLine("\n[~] Exiting the system...");
           userExited = true; // this ATM session should end
           break;
         default: // user did not enter an integer from 1-4
-          screen.displayMessageLine("\nYou did not enter a valid selection. Try again.");
+          screen.displayMessageLine("\n[~] You did not enter a valid selection. Please try again.");
           break;
       }
     }
@@ -105,7 +107,7 @@ public class ATM {
     screen.displayMessageLine("2 - Withdraw cash");
     screen.displayMessageLine("3 - Deposit funds");
     screen.displayMessageLine("4 - Exit\n");
-    screen.displayMessage("Enter a choice: ");
+    screen.displayMessage("[?] Enter a choice: ");
     return keypad.getInput(); // return user's selection
   }
 

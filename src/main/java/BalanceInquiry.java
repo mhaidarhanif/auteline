@@ -7,6 +7,8 @@
 // BalanceInquiry.java
 // Represents a balance inquiry ATM transaction
 
+package main.java;
+
 public class BalanceInquiry extends Transaction {
 
   // BalanceInquiry constructor
@@ -24,10 +26,10 @@ public class BalanceInquiry extends Transaction {
     // get the total balance for the account involved
     double totalBalance = bankDatabase.getTotalBalance(getAccountNumber());
     // display the balance information on the screen
-    screen.displayMessageLine("\nBalance Information:");
-    screen.displayMessage(" - Available balance: ");
+    screen.displayMessageLine("\n[i] Balance Information:");
+    screen.displayMessage(" |  Available balance: ");
     screen.displayDollarAmount(availableBalance);
-    screen.displayMessage("\n - Total balance:");
+    screen.displayMessage("\n |  Total balance: ");
     screen.displayDollarAmount(totalBalance);
     screen.displayMessageLine("");
   }

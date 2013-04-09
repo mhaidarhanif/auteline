@@ -7,6 +7,8 @@
 // Withdrawal.java
 // Represents a withdrawal ATM transaction
 
+package main.java;
+
 public class Withdrawal extends Transaction {
 
   private int amount; // amount to withdraw
@@ -61,7 +63,7 @@ public class Withdrawal extends Transaction {
                                     "\n\nPlease choose a smaller amount.");
         }
       } else { // user chose cancel menu option
-        screen.displayMessageLine("\nCanceling transaction...");
+        screen.displayMessageLine("\n[~] Canceling transaction...");
         return; // return to main menu because user canceled
       }
     } while (!cashDispensed);
