@@ -17,7 +17,7 @@ public abstract class CommonFrame extends JFrame {
 
   // define common settings for all frame
   public CommonFrame(String heading) {
-    super("Employ - " + heading);
+    super("Auteline - " + heading);
 
     setSize(400, 500);
     setResizable(false);

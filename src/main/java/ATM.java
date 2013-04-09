@@ -1,9 +1,8 @@
 package main.java;
 
 /**
- * SMTI06, 54411850, M Haidar Hanif
- * Task Five: Automated Teller Machine
- * Auteline | Simple ATM simulator with basic features
+ * SMTI06, 54411850, M Haidar Hanif Task Five: Automated Teller Machine Auteline | Simple ATM
+ * simulator with basic features
  */
 
 // ATM.java
@@ -39,17 +38,16 @@ public class ATM {
   // start ATM
   public void run() {
     // welcome and authenticate user; perform transactions
-    while (true) {
-      // loop while user is not yet authenticated
-      while (!userAuthenticated) {
-        screen.displayMessageLine("\n[i] Welcome to Auteline Bank ATM!");
-        authenticateUser(); // authenticate user
-      } // end while
-      performTransactions(); // user is now authenticated
-      userAuthenticated = false; // reset before next ATM session
-      currentAccountNumber = 0; // reset before next ATM session
-      screen.displayMessageLine("\n[i] Thank you for banking with Auteline Bank!");
+    // loop while user is not yet authenticated
+    while (!userAuthenticated) {
+      screen.displayMessageLine("\n[i] Welcome to Auteline Bank ATM!");
+      authenticateUser();
     }
+    performTransactions(); // user is now authenticated
+    userAuthenticated = false; // reset before next ATM session
+    currentAccountNumber = 0; // reset before next ATM session
+    screen.displayMessageLine("\n[i] Thank you for banking with Auteline Bank!");
+
   }
 
   // attempts to authenticate user against database
@@ -73,7 +71,7 @@ public class ATM {
   private void performTransactions() {
 
     // local variable to store transaction currently being processed
-    Transaction currentTransaction = null;
+    Transaction currentTransaction;
     boolean userExited = false; // user has not chosen to exit
 
     // loop while user has not chosen option to exit system
@@ -94,7 +92,7 @@ public class ATM {
           userExited = true; // this ATM session should end
           break;
         default: // user did not enter an integer from 1-4
-          screen.displayMessageLine("\n[~] You did not enter a valid selection. Please try again.");
+          screen.displayMessageLine("\n[!] You did not enter a valid selection! Please try again.");
           break;
       }
     }
@@ -102,7 +100,7 @@ public class ATM {
 
   // display the main menu and return an input selection
   private int displayMainMenu() {
-    screen.displayMessageLine("\nMain menu:");
+    screen.displayMessageLine("\n[Main menu]");
     screen.displayMessageLine("1 - View my balance");
     screen.displayMessageLine("2 - Withdraw cash");
     screen.displayMessageLine("3 - Deposit funds");
