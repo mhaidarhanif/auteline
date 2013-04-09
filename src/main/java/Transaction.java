@@ -7,6 +7,8 @@
 // Transaction.java
 // Abstract superclass Transaction represents an ATM transaction
 
+package main.java;
+
 public abstract class Transaction {
 
   private int accountNumber; // indicates account involved

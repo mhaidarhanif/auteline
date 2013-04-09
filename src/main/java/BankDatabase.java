@@ -7,6 +7,8 @@
 // BankDatabase.java
 // Represents the bank account information database
 
+package main.java;
+
 public class BankDatabase {
 
   private Account accounts[]; // array of Accounts

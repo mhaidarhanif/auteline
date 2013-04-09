@@ -4,18 +4,31 @@
  * Auteline | Simple ATM simulator with basic features
  */
 
-// ATM.java
-// Represents an automated teller machine
+package main.frame;
 
-public class ATM {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import main.java.BalanceInquiry;
+import main.java.BankDatabase;
+import main.java.CashDispenser;
+import main.java.Deposit;
+import main.java.DepositSlot;
+import main.java.Keypad;
+import main.java.Screen;
+import main.java.Transaction;
+import main.java.Withdrawal;
+
+public class UnitFrame extends CommonFrame implements ActionListener {
+
+  // variables corresponding user's conditions and actions
   private boolean userAuthenticated; // whether user is authenticated
-  private int currentAccountNumber; // current user's account number
+  private int currentAccountNumber;  // current user's account number
   private Screen screen; // ATM's screen
   private Keypad keypad; // ATM's keypad
   private CashDispenser cashDispenser; // ATM's cash dispenser
-  private DepositSlot depositSlot; // ATM's deposit slot
-  private BankDatabase bankDatabase; // account information database
+  private DepositSlot depositSlot;     // ATM's deposit slot
+  private BankDatabase bankDatabase;   // account information database
 
   // constants corresponding to main menu options
   private static final int BALANCE_INQUIRY = 1;
@@ -23,38 +36,37 @@ public class ATM {
   private static final int DEPOSIT = 3;
   private static final int EXIT = 4;
 
-  // no-argument ATM constructor initializes instance variables
-  public ATM() {
+  // define unit interface with starting point
+  public UnitFrame() {
+    super("Unit Interface");
     userAuthenticated = false; // user is not authenticated to start
-    currentAccountNumber = 0; // no current account number to start
-    screen = new Screen(); // create screen
-    keypad = new Keypad(); // create keypad
+    currentAccountNumber = 0;  // no current account number to start
+    screen = new Screen();     // create screen
+    keypad = new Keypad();     // create keypad
     cashDispenser = new CashDispenser(); // create cash dispenser
-    depositSlot = new DepositSlot(); // create deposit slot
-    bankDatabase = new BankDatabase(); // create acct info database
+    depositSlot = new DepositSlot();     // create deposit slot
+    bankDatabase = new BankDatabase();   // create acct info database
   }
 
-  // start ATM
+  // start ATM unit
+  // welcome and authenticate user; then perform transactions
   public void run() {
-    // welcome and authenticate user; perform transactions
-    while (true) {
-      // loop while user is not yet authenticated
-      while (!userAuthenticated) {
-        screen.displayMessageLine("\nWelcome!");
-        authenticateUser(); // authenticate user
-      } // end while
-      performTransactions(); // user is now authenticated
-      userAuthenticated = false; // reset before next ATM session
-      currentAccountNumber = 0; // reset before next ATM session
-      screen.displayMessageLine("\nThank you! Goodbye!");
+    // loop while user is not yet authenticated
+    while (!userAuthenticated) {
+      screen.displayMessageLine("[i] Welcome to Auteline Bank ATM!");
+      authenticateUser();
     }
+    performTransactions();     // user is now authenticated
+    userAuthenticated = false; // reset before next ATM session
+    currentAccountNumber = 0;  // reset before next ATM session
+    screen.displayMessageLine("[i] Thank you for banking with Auteline Bank!");
   }
 
   // attempts to authenticate user against database
   private void authenticateUser() {
-    screen.displayMessage("\nPlease enter your account number: ");
+    screen.displayMessageLine("[?] Please enter your account number: ");
     int accountNumber = keypad.getInput(); // input account number
-    screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
+    screen.displayMessageLine("[?] Enter your PIN: "); // prompt for PIN
     int pin = keypad.getInput(); // input PIN
 
     // set userAuthenticated to boolean value returned by database
@@ -63,7 +75,7 @@ public class ATM {
     if (userAuthenticated) {
       currentAccountNumber = accountNumber;
     } else {
-      screen.displayMessageLine("Invalid account number or PIN. Please try again.");
+      screen.displayMessage("[!] Invalid account number or PIN. Please try again.");
     }
   }
 
@@ -71,10 +83,10 @@ public class ATM {
   private void performTransactions() {
 
     // local variable to store transaction currently being processed
-    Transaction currentTransaction = null;
+    Transaction currentTransaction;
     boolean userExited = false; // user has not chosen to exit
-    // loop while user has not chosen option to exit system
 
+    // loop while user has not chosen option to exit system
     while (!userExited) {
       // show main menu and get user selection
       int mainMenuSelection = displayMainMenu();
@@ -88,11 +100,11 @@ public class ATM {
           currentTransaction.execute(); // execute transaction
           break;
         case EXIT: // user chose to terminate session
-          screen.displayMessageLine("\nExiting the system...");
-          userExited = true; // this ATM session should end
+          screen.displayMessageLine("[~] Exiting the system...");
+          userExited = true; // end ATM session
           break;
         default: // user did not enter an integer from 1-4
-          screen.displayMessageLine("\nYou did not enter a valid selection. Try again.");
+          screen.displayMessageLine("[!] You did not enter a valid selection! Please try again.");
           break;
       }
     }
@@ -100,13 +112,13 @@ public class ATM {
 
   // display the main menu and return an input selection
   private int displayMainMenu() {
-    screen.displayMessageLine("\nMain menu:");
+    screen.displayMessageLine("\n[Main menu]");
     screen.displayMessageLine("1 - View my balance");
     screen.displayMessageLine("2 - Withdraw cash");
     screen.displayMessageLine("3 - Deposit funds");
-    screen.displayMessageLine("4 - Exit\n");
-    screen.displayMessage("Enter a choice: ");
-    return keypad.getInput(); // return user's selection
+    screen.displayMessageLine("4 - Exit");
+    screen.displayMessage("[?] Enter a choice: ");
+    return keypad.getInput();
   }
 
   // return object of specified Transaction subclass
@@ -114,20 +126,25 @@ public class ATM {
     Transaction temp = null; // temporary Transaction variable
     // determine which type of Transaction to create
     switch (type) {
-      case BALANCE_INQUIRY: // create new BalanceInquiry transaction
+      case BALANCE_INQUIRY:
         temp = new BalanceInquiry(currentAccountNumber, screen, bankDatabase);
         break;
-      case WITHDRAWAL: // create new Withdrawal transaction
-        temp = new Withdrawal(currentAccountNumber, screen,
-                              bankDatabase, keypad, cashDispenser);
+      case WITHDRAWAL:
+        temp = new Withdrawal(currentAccountNumber, screen, bankDatabase, keypad, cashDispenser);
         break;
-      case DEPOSIT: // create new Deposit transaction
-        temp = new Deposit(currentAccountNumber, screen,
-                           bankDatabase, keypad, depositSlot);
+      case DEPOSIT:
+        temp = new Deposit(currentAccountNumber, screen, bankDatabase, keypad, depositSlot);
         break;
     }
     return temp; // return the newly created object
   }
 
-}
+  // call listener when there is an event
+  @Override
+  public void actionPerformed(ActionEvent event) {
+    System.out.println("AutelineApp: event: " + event.getActionCommand()); // event logger
+    // logic when specific action is performed
+    repaint();
+  }
 
+}

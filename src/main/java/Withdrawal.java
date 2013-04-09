@@ -7,6 +7,8 @@
 // Withdrawal.java
 // Represents a withdrawal ATM transaction
 
+package main.java;
+
 public class Withdrawal extends Transaction {
 
   private int amount; // amount to withdraw
@@ -50,18 +52,18 @@ public class Withdrawal extends Transaction {
             cashDispenser.dispenseCash(amount); // dispense cash
             cashDispensed = true; // cash was dispensed
             // instruct user to take cash
-            screen.displayMessageLine("\nYour cash has been" +
-                                      " dispensed. Please take your cash now.");
+            screen.displayMessageLine("[i] Your cash has been dispensed.\n" +
+                                      "    Please take your cash now.");
           } else { // cash dispenser does not have enough cash
-            screen.displayMessageLine("\nInsufficient cash available in the ATM." +
-                                      "\n\nPlease choose a smaller amount.");
+            screen.displayMessageLine("[!] Insufficient cash available in the ATM.\n" +
+                                      "    Please choose a smaller amount.");
           }
         } else { // not enough money available in user's account
-          screen.displayMessageLine("\nInsufficient funds in your account." +
-                                    "\n\nPlease choose a smaller amount.");
+          screen.displayMessageLine("[!] Insufficient funds in your account!\n" +
+                                    "    Please choose a smaller amount.");
         }
       } else { // user chose cancel menu option
-        screen.displayMessageLine("\nCanceling transaction...");
+        screen.displayMessageLine("[~] Canceling transaction...");
         return; // return to main menu because user canceled
       }
     } while (!cashDispensed);
@@ -77,14 +79,14 @@ public class Withdrawal extends Transaction {
     // loop while no valid choice has been made
     while (userChoice == 0) {
       // display the menu
-      screen.displayMessageLine("\nWithdrawal Menu:");
+      screen.displayMessageLine("\n[Withdrawal Menu]");
       screen.displayMessageLine("1 - $20");
       screen.displayMessageLine("2 - $40");
       screen.displayMessageLine("3 - $60");
       screen.displayMessageLine("4 - $100");
       screen.displayMessageLine("5 - $200");
       screen.displayMessageLine("6 - Cancel transaction");
-      screen.displayMessage("\nChoose a withdrawal amount: ");
+      screen.displayMessage("[?] Choose a withdrawal amount: ");
       int input = keypad.getInput(); // get user input through keypad
       // determine how to proceed based on the input value
       switch (input) {
@@ -99,7 +101,7 @@ public class Withdrawal extends Transaction {
           userChoice = CANCELED; // save user's choice
           break;
         default: // the user did not enter a value from 1-6
-          screen.displayMessageLine("\nInvalid selection. Try again.");
+          screen.displayMessageLine("[!] Invalid selection. Try again.");
       }
     }
     return userChoice; // return withdrawal amount or CANCELED
