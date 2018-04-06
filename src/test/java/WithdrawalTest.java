@@ -8,11 +8,6 @@ public class WithdrawalTest {
         assertTrue(a + b == 3);
     }
 
-    @org.junit.Test
-    public void dummyFail() throws Exception {
-        int a = 1;
-        int b = 2;
-        assertTrue(a + b == 33);
-    }
+
 
 }
