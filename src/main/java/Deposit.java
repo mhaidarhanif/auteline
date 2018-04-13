@@ -10,9 +10,10 @@
 package main.java;
 
 public class Deposit extends Transaction {
-  /*added multiline
-  * comment to test
-  * the new quality gate*/
+  //added multiline
+  //comment to test
+  // the new quality
+  //gate
 
   private double amount; // amount to deposit
   private Keypad keypad; // reference to keypad
