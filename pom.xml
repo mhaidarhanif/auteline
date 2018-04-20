@@ -52,6 +52,17 @@
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.8.2-SNAPSHOT</version>
                     <executions>
+
+
+                        <execution>
+                            <id>auto-clean</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+
+
                         <execution>
                             <goals>
                                 <goal>prepare-agent</goal>
