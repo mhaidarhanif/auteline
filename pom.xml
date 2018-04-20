@@ -69,20 +69,7 @@
                             <goals>
                                 <goal>check</goal>
                             </goals>
-                            <configuration>
-                                <rules>
-                                    <rule implementation="org.jacoco.maven.RuleConfiguraton">
-                                        <element>BUNDLE</element>
-                                        <limits>
-                                            <limit implementation="org.jacoco.report.check.limit">
-                                                <couter>COMPLEXITY</couter>
-                                                <value>COVEREDRATIO</value>
-                                                <minimum>0.05</minimum>
-                                            </limit>
-                                        </limits>
-                                    </rule>
-                                </rules>
-                            </configuration>
+
                         </execution>
                     </executions>
 
