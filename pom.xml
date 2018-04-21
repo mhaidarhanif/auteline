@@ -34,14 +34,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.9</version>
-        </dependency>
-
-
 
     </dependencies>
 
@@ -55,75 +47,47 @@
                     <version>3.2</version>
                 </plugin>
 
-
-
-
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>unit-test</id>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>test</goal>
-                            </goals>
-                            <configuration>
-                                <skip>${maven.test.skip}</skip>
-                                <argLine>${argLine}</argLine>
-                                <excludes>
-                                    <exclude>**/*IntegrationTest.java</exclude>
-                                </excludes>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>integration-test</id>
-                            <phase>integration-test</phase>
-                            <goals>
-                                <goal>test</goal>
-                            </goals>
-                            <configuration>
-                                <skip>${skipITs}</skip>
-                                <argLine>${argLine}</argLine>
-                                <includes>
-                                    <include>**/*IntegrationTest.java</include>
-                                </includes>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.5.10.201208310627</version>
-                    <configuration>
-                        <skip>${maven.test.skip}</skip>
-                        <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
-                        <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
-                        <output>file</output>
-                        <append>true</append>
-                    </configuration>
+                    <version>0.8.2-SNAPSHOT</version>
                     <executions>
                         <execution>
-                            <id>jacoco-initialize</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
                         </execution>
                         <execution>
-                            <id>jacoco-site</id>
-                            <phase>verify</phase>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
                             <goals>
                                 <goal>report</goal>
                             </goals>
                         </execution>
+                        <execution>
+                            <id>default-check</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <rule implementation="org.jacoco.maven.RuleConfiguraton">
+                                        <element>BUNDLE</element>
+                                        <limits>
+                                            <limit implementation="org.jacoco.report.check.limit">
+                                                <couter>COMPLEXITY</couter>
+                                                <value>COVEREDRATIO</value>
+                                                <minimum>0.05</minimum>
+                                            </limit>
+                                        </limits>
+                                    </rule>
+                                </rules>
+                            </configuration>
+                        </execution>
                     </executions>
+
+
                 </plugin>
-
-
-
             </plugins>
         </pluginManagement>
 
