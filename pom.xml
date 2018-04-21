@@ -13,9 +13,15 @@
 <url>http://maven.apache.org</url>
 
 <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <sonar.sources>src/main</sonar.sources>
+    <sonar.tests>src/test</sonar.tests>
+    <!-- Below property indicates the pattern of the test suite -->
+    <runSuite>**/*Suite.class</runSuite>
+    <!-- Sonar-JaCoCo properties -->
+    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+    <sonar.language>java</sonar.language>
 
 </properties>
 
@@ -46,16 +52,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.15</version>
                     <configuration>
-                        <!-- Sets the VM argument line used when unit tests are run. -->
-                        <argLine>${surefireArgLine}</argLine>
-                        <!-- Skips unit tests if the value of skip.unit.tests property is true -->
-                        <skipTests>${skip.unit.tests}</skipTests>
-                        <!-- Excludes integration tests when unit tests are run. -->
-                        <excludes>
-                            <exclude>**/IT*.java</exclude>
-                        </excludes>
+                        <includes>
+                            <include>${runSuite}</include>
+                        </includes>
                     </configuration>
                 </plugin>
 
