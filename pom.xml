@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.ut.execution.data.file>
     </properties>
 
     <dependencies>
@@ -48,11 +49,23 @@
                 </plugin>
 
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.1</version>
+                    <configuration>
+                        <skipMain>true</skipMain>
+                        <skip>true</skip>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.2-SNAPSHOT</version>
+                    <version>${jacoco.version}</version>
                     <executions>
                         <execution>
+                            <id>prepare-agent</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
@@ -65,28 +78,25 @@
                             </goals>
                         </execution>
                         <execution>
-                            <id>default-check</id>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
                             <goals>
-                                <goal>check</goal>
+                                <goal>report</goal>
                             </goals>
                             <configuration>
-                                <rules>
-                                    <rule implementation="org.jacoco.maven.RuleConfiguraton">
-                                        <element>BUNDLE</element>
-                                        <limits>
-                                            <limit implementation="org.jacoco.report.check.limit">
-                                                <couter>COMPLEXITY</couter>
-                                                <value>COVEREDRATIO</value>
-                                                <minimum>0.05</minimum>
-                                            </limit>
-                                        </limits>
-                                    </rule>
-                                </rules>
+                                <!-- Sets the path to the file which contains the execution data. -->
+
+                                <dataFile>target/jacoco.exec</dataFile>
+                                <!-- Sets the output directory for the code coverage report. -->
+                                <outputDirectory>target/jacoco-ut</outputDirectory>
                             </configuration>
                         </execution>
                     </executions>
-
-
+                    <configuration>
+                        <systemPropertyVariables>
+                            <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                        </systemPropertyVariables>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
