@@ -10,7 +10,7 @@
 
 
     <name>atm</name>
-    <url>http://maven.apache.org</url>
+    <url>http://www.jacoco.org/jacoco</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,7 +59,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.2-SNAPSHOT</version>
+                    <version>0.7.9</version>
                     <executions>
                         <execution>
                             <id>default-prepare-agent</id>
