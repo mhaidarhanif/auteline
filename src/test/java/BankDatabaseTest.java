@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BankDatabaseTest {
-    BankDatabase db = new BankDatabase();
+    private final BankDatabase db = new BankDatabase();
     @Test
     public void authenticateUser() throws Exception {
 
@@ -22,7 +22,7 @@ public class BankDatabaseTest {
     @Test
     public void credit() throws Exception {
         db.credit(12345,500.5);
-        assertEquals(1700.5,db.getTotalBalance(12345),0.00001);
+        assertEquals(1800.5,db.getTotalBalance(12345),0.00001);
     }
 
     @Test
