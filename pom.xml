@@ -52,9 +52,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.18.1</version>
-                    <configuration>
-                        <argLine>${jacoco.agent.argLine}</argLine>
-                    </configuration>
                 </plugin>
 
 
@@ -65,12 +62,13 @@
                     <version>0.8.2-SNAPSHOT</version>
                     <executions>
                         <execution>
+                            <id>default-prepare-agent</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
                         </execution>
                         <execution>
-                            <id>report</id>
+                            <id>default-report</id>
                             <phase>prepare-package</phase>
                             <goals>
                                 <goal>report</goal>
