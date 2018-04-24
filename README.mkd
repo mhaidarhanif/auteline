@@ -1,5 +1,7 @@
 # Auteline
 
+![Screenshot](./assets/screenshot.png)
+
 ### Important Notes
 
 Read on [Learning Step](#learning-step) section.
@@ -25,7 +27,7 @@ Date:   April 2013
 
 ### Build
 
-* Run with `java -jar auteline.jar`
+* Run the build inside an IDE like [IntelliJ IDEA](https://www.jetbrains.com/idea).
 
 ### Test
 
