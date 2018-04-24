@@ -1,9 +1,8 @@
-Auteline
-========
+# Auteline
 
 ### Important Notes
 
-TODO
+Read on [Learning Step](#Learning-Step) section.
 
 ### Identification
 
@@ -24,12 +23,18 @@ Page:   63 - 522 & 1624 - 1648
 Date:   April 2013
 ```
 
+### Test
+
+* Run with `java -jar auteline.jar`
+* Sample account number: 12345
+* Sample PIN number: 54321
+
 ### Objectives
 
-- Automated Teller Machine
-- Bank database
-- SQL queries
-- GUI application
+* Automated Teller Machine
+* Bank database
+* SQL queries
+* GUI application
 
 ### Project Structure
 
@@ -45,37 +50,35 @@ auteline
 └── .gitignore
 ```
 
-*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+---
 
-Learning Step
--------------
+## Learning Step
 
-1. Object-Oriented Programming
-2. Java Programming Language
-3. Unified Modeling Language
-   - Diagram
-   - Class
-   - Object
-   - Use Case
-   - Sequence
-   - Collaboration
-   - State Chart
-   - Activity
-   - Deployment
-4. GUI Application
-5. SQL Database
+1.  Object-Oriented Programming
+2.  Java Programming Language
+3.  Unified Modeling Language
+    * Diagrams
+    * Class
+    * Object
+    * Use Case
+    * Sequence
+    * Collaboration
+    * State Chart
+    * Activity
+    * Deployment
+4.  GUI Application
+5.  SQL Database
 
-*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+---
 
-Requirements Document
----------------------
+## Requirements Document
 
 A local bank intends to install a new automated teller machine (ATM) to allow users (i.e., bank customers) to perform basic financial transactions. Each user can have only one account at the bank. ATM users should be able to view their account balance, withdraw cash (i.e., take money out of an account) and deposit funds (i.e., place money into an account). The user interface of the automated teller machine contains the following components:
 
-- a screen that displays messages to the user
-- a keypad that receives numeric input from the user
-- a cash dispenser that dispenses cash to the user and
-- a deposit slot that receives deposit envelopes from the user.
+* a screen that displays messages to the user
+* a keypad that receives numeric input from the user
+* a cash dispenser that dispenses cash to the user and
+* a deposit slot that receives deposit envelopes from the user.
 
 ```
 Welcome!
@@ -85,11 +88,11 @@ Enter your PIN: <numberPin>
 
 Upon first approaching the ATM (assuming no one is currently using it), the user should experience the following sequence of events):
 
-1. The screen displays a welcome message and prompts the user to enter an account number.
-2. The user enters a five-digit account number using the keypad.
-3. The screen prompts the user to enter the PIN (personal identification number) associated with the specified account number.
-4. The user enters a five-digit PIN using the keypad.
-5. If the user enters a valid account number and the correct PIN for that account, the screen displays the main menu (Fig. 2.18). If the user enters an invalid account number or an incorrect PIN, the screen displays an appropriate message, then the ATM returns to Step 1 to restart the authentication process.
+1.  The screen displays a welcome message and prompts the user to enter an account number.
+2.  The user enters a five-digit account number using the keypad.
+3.  The screen prompts the user to enter the PIN (personal identification number) associated with the specified account number.
+4.  The user enters a five-digit PIN using the keypad.
+5.  If the user enters a valid account number and the correct PIN for that account, the screen displays the main menu (Fig. 2.18). If the user enters an invalid account number or an incorrect PIN, the screen displays an appropriate message, then the ATM returns to Step 1 to restart the authentication process.
 
 ```
 Main menu
@@ -102,46 +105,49 @@ Enter a choice: <numberChoice>
 
 The following steps describe the actions that occur when the user enters 2 to make a withdrawal:
 
-1. The screen displays a menu containing standard withdrawal amounts: $20 (option 1), $40 (option 2), $60 (option 3), $100 (option 4) and $200 (option 5). The menu also contains an option to allow the user to cancel the transaction (option 6).
-2. The user enters a menu selection using the keypad.
-3. If the withdrawal amount chosen is greater than the user’s account balance, the screen displays a message stating this and telling the user to choose a smaller amount. The ATM then returns to Step 1. If the withdrawal amount chosen is less than or equal to the user’s account balance (i.e., an acceptable amount), the ATM proceeds to Step 4. If the user chooses to cancel the transaction (option 6), the ATM displays the main menu and waits for user input.
-4. If the cash dispenser contains enough cash to satisfy the request, the ATM proceeds to Step
-5. Otherwise, the screen displays a message indicating the problem and telling the user to choose a smaller withdrawal amount. The ATM then returns to Step 1.
-5. The ATM debits the withdrawal amount from the user’s account in the bank’s database (i.e., subtracts the withdrawal amount from the user’s account balance).
-6. The cash dispenser dispenses the desired amount of money to the user.
-7. The screen displays a message reminding the user to take the money.
+1.  The screen displays a menu containing standard withdrawal amounts: $20 (option 1), $40 (option 2), $60 (option 3), $100 (option 4) and $200 (option 5). The menu also contains an option to allow the user to cancel the transaction (option 6).
+2.  The user enters a menu selection using the keypad.
+3.  If the withdrawal amount chosen is greater than the user’s account balance, the screen displays a message stating this and telling the user to choose a smaller amount. The ATM then returns to Step 1. If the withdrawal amount chosen is less than or equal to the user’s account balance (i.e., an acceptable amount), the ATM proceeds to Step 4. If the user chooses to cancel the transaction (option 6), the ATM displays the main menu and waits for user input.
+4.  If the cash dispenser contains enough cash to satisfy the request, the ATM proceeds to Step
+5.  Otherwise, the screen displays a message indicating the problem and telling the user to choose a smaller withdrawal amount. The ATM then returns to Step 1.
+6.  The ATM debits the withdrawal amount from the user’s account in the bank’s database (i.e., subtracts the withdrawal amount from the user’s account balance).
+7.  The cash dispenser dispenses the desired amount of money to the user.
+8.  The screen displays a message reminding the user to take the money.
 
 ```
 Withdrawal menu
   1 - $20    4 - $100
   2 - $40    5 - $200
   3 - $60    6 - Cancel transaction
-Choose a withdrawal amount:
+Choose a withdrawal amount: <numberChoice>
 ```
 
 The following steps describe the actions that occur when the user enters 3 to make a deposit:
 
-1. The screen prompts the user to enter a deposit amount or type 0 (zero) to cancel the transaction.
-2. The user enters a deposit amount or 0 using the keypad. [Note: The keypad does not contain a decimal point or a dollar sign, so the user cannot type a real dollar amount (e.g., $1.25). Instead, the user must enter a deposit amount as a number of cents (e.g., 125). The ATM then divides this number by 100 to obtain a number representing a dollar amount (e.g., 125 ÷ 100 = 1.25).]
-3. If the user specifies a deposit amount, the ATM proceeds to Step 4. If the user chooses to cancel the transaction (by entering 0), the ATM displays the main menu and waits for user input.
-4. The screen displays a message telling the user to insert a deposit envelope into the deposit slot.
-5. If the deposit slot receives a deposit envelope within two minutes, the ATM credits the deposit amount to the user’s account in the bank’s database (i.e., adds the deposit amount to the user’s account balance). [Note: This money is not immediately available for withdrawal. The bank first must physically verify the amount of cash in the deposit envelope, and any checks in the envelope must clear (i.e., money must be transferred from the check writer’s account to the check recipient’s account). When either of these events occurs, the bank appropriately updates the user’s balance stored in its database. This occurs independently of the ATM system.] If the deposit slot does not receive a deposit envelope within this time period, the screen displays a message that the system has canceled the transaction due to inactivity. The ATM then displays the main menu and waits for user input.
+1.  The screen prompts the user to enter a deposit amount or type 0 (zero) to cancel the transaction.
+2.  The user enters a deposit amount or 0 using the keypad. [Note: The keypad does not contain a decimal point or a dollar sign, so the user cannot type a real dollar amount (e.g., $1.25). Instead, the user must enter a deposit amount as a number of cents (e.g., 125). The ATM then divides this number by 100 to obtain a number representing a dollar amount (e.g., 125 ÷ 100 = 1.25).]
+3.  If the user specifies a deposit amount, the ATM proceeds to Step 4. If the user chooses to cancel the transaction (by entering 0), the ATM displays the main menu and waits for user input.
+4.  The screen displays a message telling the user to insert a deposit envelope into the deposit slot.
+5.  If the deposit slot receives a deposit envelope within two minutes, the ATM credits the deposit amount to the user’s account in the bank’s database (i.e., adds the deposit amount to the user’s account balance). [Note: This money is not immediately available for withdrawal. The bank first must physically verify the amount of cash in the deposit envelope, and any checks in the envelope must clear (i.e., money must be transferred from the check writer’s account to the check recipient’s account). When either of these events occurs, the bank appropriately updates the user’s balance stored in its database. This occurs independently of the ATM system.] If the deposit slot does not receive a deposit envelope within this time period, the screen displays a message that the system has canceled the transaction due to inactivity. The ATM then displays the main menu and waits for user input.
 
-*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+```
+Deposit menu
+Enter deposit amount: <depositAmount>
+```
 
-Diagrams
---------
+---
 
-1. Use Case Diagram
-2. Class Diagram
-3. Object Diagram
-4. Sequence Diagram
-5. Activity Diagram
+## Diagrams
+
+1.  Use Case Diagram
+2.  Class Diagram
+3.  Object Diagram
+4.  Sequence Diagram
+5.  Activity Diagram
 
 Attached in [diagrams](/diagrams).
 
-Specification
--------------
+## Specification
 
 ### User Interface
 
@@ -159,12 +165,10 @@ ATM
     └── Insert Deposit
 ```
 
-*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+---
 
-Resource
---------
+## Resource
 
 Source code released under [MIT License](LICENSE) and available in [GitHub repository](https://github.com/mhaidarh/auteline).
 
 Graphics released under [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-nc-sa/3.0).
-

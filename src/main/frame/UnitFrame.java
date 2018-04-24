@@ -9,6 +9,8 @@ package main.frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
+
 import main.java.BalanceInquiry;
 import main.java.BankDatabase;
 import main.java.CashDispenser;
@@ -20,6 +22,15 @@ import main.java.Transaction;
 import main.java.Withdrawal;
 
 public class UnitFrame extends CommonFrame implements ActionListener {
+
+  // panels on frame
+  KeypadPanel panelKeypad = new KeypadPanel();
+  JPanel panelScreen = new JPanel();
+  JPanel panelCashDispenser = new JPanel();
+  JPanel panelDepositSlot = new JPanel();
+
+  // input components
+
 
   // variables corresponding user's conditions and actions
   private boolean userAuthenticated; // whether user is authenticated

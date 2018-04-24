@@ -4,10 +4,10 @@
  * Auteline | Simple ATM simulator with basic features
  */
 
-package main.java;
-
 // Account.java
 // Represents a bank account
+
+package main.java;
 
 public class Account {
 

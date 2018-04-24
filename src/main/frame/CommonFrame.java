@@ -19,7 +19,7 @@ public abstract class CommonFrame extends JFrame {
   public CommonFrame(String heading) {
     super("Auteline - " + heading);
 
-    setSize(400, 500);
+    setSize(600, 400);
     setResizable(false);
     setLocationRelativeTo(null);
     setLayout(new FlowLayout());

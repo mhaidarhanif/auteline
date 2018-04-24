@@ -1,5 +1,3 @@
-package main.frame;
-
 /**
  * SMTI06, 54411850, M Haidar Hanif
  * Task Five: Automated Teller Machine
@@ -8,6 +6,8 @@ package main.frame;
 
 // AutelineApp.java
 // GUI driver program to test ATM program
+
+package main.frame;
 
 public class AutelineApp {
 
