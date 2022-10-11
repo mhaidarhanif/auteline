@@ -1,8 +1,10 @@
 # Auteline
 
+![Screenshot](./assets/screenshot.png)
+
 ### Important Notes
 
-Read on [Learning Step](#Learning-Step) section.
+Read on [Learning Step](#learning-step) section.
 
 ### Identification
 
@@ -22,6 +24,10 @@ Appx:   M. ATM Case Study Code
 Page:   63 - 522 & 1624 - 1648
 Date:   April 2013
 ```
+
+### Build
+
+* Run the build inside an IDE like [IntelliJ IDEA](https://www.jetbrains.com/idea).
 
 ### Test
 
