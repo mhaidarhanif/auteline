@@ -40,5 +40,9 @@
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
 
-	"features": { "ghcr.io/devcontainers/features/github-cli": {} }
+	"features": { "ghcr.io/devcontainers/features/github-cli": {} },
+
+	"postCreateCommand": "cp /workspaces/auteline/githooks/* .git/hooks/ && gh auth login",
+	
+	"postStartCommand": "echo git username = $(git config user.name) && echo git config email = $(git config user.email)"
 }
