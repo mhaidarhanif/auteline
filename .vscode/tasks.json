@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Auteline",
+            "type": "shell",
+            "command": "${workspaceFolder}/bazel build //src/main/java:Auteline",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run Tests",
+            "type": "shell",
+            "command": "${workspaceFolder}/bazel test //... && ${workspaceFolder}/allure/bin/allure serve ${workspaceFolder}/bazel-testlogs/src/test/java/TestAccount/",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+    ]
+}
