@@ -9,7 +9,7 @@
             "command": "${workspaceFolder}/bazel-bin/src/main/java/Auteline",
             "request": "launch",
             "type": "node-terminal",
-            "preLaunchTask": "Build Auteline"
+            "preLaunchTask": "Build Auteline",
         }
     ]
 }

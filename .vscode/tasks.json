@@ -12,6 +12,16 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }
+        },
+        {
+            "label": "Run Tests",
+            "type": "shell",
+            "command": "${workspaceFolder}/bazel test //... && ${workspaceFolder}/allure/bin/allure serve ${workspaceFolder}/bazel-testlogs/src/test/java/TestAccount/",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
     ]
 }
