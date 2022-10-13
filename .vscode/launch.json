@@ -5,24 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Launch Current File",
+            "name": "Launch",
+            "command": "${workspaceFolder}/bazel-bin/src/main/java/Auteline",
             "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch AutelineApp",
-            "request": "launch",
-            "mainClass": "main.frame.AutelineApp",
-            "projectName": "auteline_20c0b6fb"
-        },
-        {
-            "type": "java",
-            "name": "Launch ATMTest",
-            "request": "launch",
-            "mainClass": "main.java.ATMTest",
-            "projectName": "auteline_20c0b6fb"
+            "type": "node-terminal",
+            "preLaunchTask": "Build Auteline"
         }
     ]
 }

@@ -32,3 +32,11 @@ local.properties
 .settings
 .metadata
 
+# Bazel
+bazel*
+
+# Allure
+allure*
+
+# lcov
+lcov

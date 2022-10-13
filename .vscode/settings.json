@@ -1,0 +1,5 @@
+{
+    "java.project.referencedLibraries": [
+        "./bazel-bin/external/**/*.jar",
+    ],
+}

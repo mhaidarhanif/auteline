@@ -47,6 +47,8 @@
         		}
 	},
 
+	"onCreateCommand": "./scripts/onCreateCommand.sh",
+	
 	"postCreateCommand": "cp /workspaces/auteline/githooks/* .git/hooks/ && gh auth login",
 	
 	"postStartCommand": "echo git username = $(git config user.name) && echo git config email = $(git config user.email)"
