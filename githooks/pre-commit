@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
-echo "*****Running unit tests******"
-
 git stash -q --keep-index
 
-gradle test
+gradle test -q > /dev/null 2>&1
 
 status=$?
 
 git stash pop -q
 
-echo "*****Done with unit tests******"
 
 if [[ $status -ne 0 ]]
 then

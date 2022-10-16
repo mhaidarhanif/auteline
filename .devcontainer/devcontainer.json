@@ -33,6 +33,7 @@
 	},
 
 	"postCreateCommand": "gh auth login",
+	"postStartCommand": "cp ./githooks/pre-commit ./.git/hooks/pre-commit",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
