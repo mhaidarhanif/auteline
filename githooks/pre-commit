@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+git stash -q --keep-index
+
+gradle test -q > /dev/null 2>&1
+
+status=$?
+
+git stash pop -q
+
+
+if [[ $status -ne 0 ]]
+then
+  echo "Unit Tests Failed!"
+fi
+
+exit $status

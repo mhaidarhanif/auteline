@@ -40,3 +40,11 @@ allure*
 
 # lcov
 lcov
+
+# http logs
+http.log
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
