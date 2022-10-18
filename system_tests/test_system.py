@@ -28,12 +28,12 @@ def test_systemTest():
     child.sendline('1')
     child.expect_exact('[i] Balance Information:\r\n |  Available balance: ')
     print (child.after)
-    child.expect('\$\d\,\d\d\d\.\d\d')
+    child.expect(r'\$\d\,\d\d\d\.\d\d')
     print (child.after)
 
     child.expect_exact(' |  Total balance: ')
     print (child.after)
-    child.expect('\$\d\,\d\d\d\.\d\d')
+    child.expect(r'\$\d\,\d\d\d\.\d\d')
     print (child.after)
 
     child.kill(0)
