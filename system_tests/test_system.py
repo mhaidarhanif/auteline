@@ -5,7 +5,7 @@ def test_systemTest():
     #having trouble creating one without META-INF/MANIFEST.MF
     #spent a long time trying to make jar from command line 
     #with commands like jar cfm test.jar manifest.mf ATMTest.class
-    child = pexpect.spawn('java -jar auteline.jar')
+    child = pexpect.spawn('gradle run')
 
     child.expect_exact('[i] Welcome to Auteline Bank ATM!')
     print (child.after)
@@ -36,6 +36,7 @@ def test_systemTest():
     child.expect('\$\d\,\d\d\d\.\d\d')
     print (child.after)
 
-    child.close()
-    assert child.exitstatus == 0
+    child.kill(0)
+    
+    assert child.exitstatus == None
 
