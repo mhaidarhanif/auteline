@@ -48,3 +48,7 @@ http.log
 
 # Ignore Gradle build output directory
 build
+
+
+.pytest_cache
+system_tests/__pycache__
