@@ -19,6 +19,7 @@ def test_systemTest():
 1 - View my balance\r\n\
 2 - Withdraw cash\r\n\
 3 - Deposit funds\r\n\
+9 - Cole's Favorite Lunch\r\n\
 52 - Gavin's Favorite Lunch\r\n\
 62 - Justin's Favorite Lunch\r\n\
 4 - Exit")

@@ -97,6 +97,9 @@ public class ATM {
         case 52:
         screen.displayMessageLine("Gavin's Favorite Lunch is Spicy Pizza");
           break;
+        case 9:
+        screen.displayMessageLine("Cole's Favorite Lunch is Mild Pizza");
+          break;
         default: // user did not enter an integer from 1-4
           screen.displayMessageLine("\n[!] You did not enter a valid selection! Please try again.");
           break;
@@ -110,6 +113,7 @@ public class ATM {
     screen.displayMessageLine("1 - View my balance");
     screen.displayMessageLine("2 - Withdraw cash");
     screen.displayMessageLine("3 - Deposit funds");
+    screen.displayMessageLine("9 - Cole's Favorite Lunch");
     screen.displayMessageLine("52 - Gavin's Favorite Lunch");
     screen.displayMessageLine("62 - Justin's Favorite Lunch");
     screen.displayMessageLine("4 - Exit\n");
