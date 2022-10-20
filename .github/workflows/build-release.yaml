@@ -1,7 +1,7 @@
 name: Run Gradle to build JAR releases
 on:
   release:
-    types: [created]
+    types: [created, edited]
 jobs:
   gradle:
     runs-on: ubuntu-latest
