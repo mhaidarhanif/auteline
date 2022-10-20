@@ -1,19 +1,28 @@
 package auteline;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class DepositTests {
+
+public class DepositTests { 
+    final int ACCOUNT_NUMBER = 12345; 
+    Screen mockScreen = mock(Screen.class);
+    BankDatabase mockDatabase = mock(BankDatabase.class);
+    DepositSlot mockSlot = mock(DepositSlot.class); 
+    Keypad mockKeypad = mock(Keypad.class);
+    Deposit deposit;
+
+    @Before
+    public final void setUp() {
+        deposit = new Deposit(ACCOUNT_NUMBER, mockScreen, mockDatabase, mockKeypad, mockSlot);
+    }
     
-    Screen screen = new Screen();
-    BankDatabase Bdb = new BankDatabase();
-    DepositSlot slot = new DepositSlot();    
-    Keypad keypad = new Keypad();
 
     @Test
     public void T001_getAccountNumber_12345_12345(){
-        int expected = 12345;
-        Deposit deposit = new Deposit(expected, screen, Bdb, keypad, slot); 
+        int expected = ACCOUNT_NUMBER;
 
         int actual = deposit.getAccountNumber();
 
@@ -22,9 +31,7 @@ public class DepositTests {
 
     @Test
     public void T002_getScreen_screen_screen(){
-        int account = 12345;
-        Screen expected = screen;
-        Deposit deposit = new Deposit(account, screen, Bdb, keypad, slot); 
+        Screen expected = mockScreen;
 
         Screen actual = deposit.getScreen();
 
@@ -33,14 +40,32 @@ public class DepositTests {
 
     @Test
     public void T003_getBankDatabase_Bdb_Bdb(){
-        int account = 12345;
-        BankDatabase expected = Bdb;
-        Deposit deposit = new Deposit(account, screen, Bdb, keypad, slot); 
+        BankDatabase expected = mockDatabase;
 
         BankDatabase actual = deposit.getBankDatabase();
 
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void T004_execute_noEnvelope_noDatabaseCredit() {
+        when(mockSlot.isEnvelopeReceived()).thenReturn(false);
 
+        deposit.execute();
+
+        verify(mockDatabase, times(0)).credit(anyInt(), anyInt());
+    }
+
+
+    @Test
+    public void T005_execute_desposit300_deposits300() {
+        final int CENTS_DEPOSITED = 30000;
+        int dollars_deposited = CENTS_DEPOSITED / 100;
+        when(mockKeypad.getInput()).thenReturn(CENTS_DEPOSITED);
+        when(mockSlot.isEnvelopeReceived()).thenReturn(true);
+
+        deposit.execute();
+
+        verify(mockDatabase, times(1)).credit(ACCOUNT_NUMBER, dollars_deposited);
+    }
 }

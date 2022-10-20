@@ -22,6 +22,7 @@ plugins {
 dependencies {
     // Use JUnit test framework.
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:3.+")
 }
 
 application {
