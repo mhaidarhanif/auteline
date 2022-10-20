@@ -15,11 +15,12 @@ def test_systemTest():
     print (child.after)
     child.sendline('54321')
 
-    child.expect_exact('[Main menu]\r\n\
+    child.expect_exact("[Main menu]\r\n\
 1 - View my balance\r\n\
 2 - Withdraw cash\r\n\
 3 - Deposit funds\r\n\
-4 - Exit')
+52 - Gavin's Favorite Lunch\r\n\
+4 - Exit")
     print (child.after)
 
     child.sendline('1')
