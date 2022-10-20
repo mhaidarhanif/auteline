@@ -20,6 +20,7 @@ def test_systemTest():
 2 - Withdraw cash\r\n\
 3 - Deposit funds\r\n\
 52 - Gavin's Favorite Lunch\r\n\
+62 - Justin's Favorite Lunch\r\n\
 4 - Exit")
     print (child.after)
 
