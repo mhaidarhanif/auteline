@@ -16,6 +16,7 @@ plugins {
     application
     id("io.qameta.allure") version "2.11.0"
     id("jacoco")
+    id("io.ktor.plugin") version "2.1.2"
 }
 
 
@@ -42,3 +43,8 @@ tasks.jacocoTestReport {
 }
 
 
+ktor {
+    fatJar {
+        archiveFileName.set("autelineATM.jar")
+    }
+}
