@@ -36,5 +36,26 @@ public class ScreenTests {
         assertEquals(expected, actual);
     }
 
+    @Test(expected = Test.None.class)
+    public void T005_displayMessage_NoExpection() throws Exception{
+
+        screen.displayMessage("Hello World");
+
+    }
+
+    @Test(expected = Test.None.class)
+    public void T006_displayMessageLine_NoExpection() throws Exception{
+
+        screen.displayMessageLine("Hello World");
+
+    }
+
+    @Test(expected = Test.None.class)
+    public void T007_displayDollarAmount_NoExpection() throws Exception{
+
+        screen.displayDollarAmount(100.00);
+
+    }
+
 
 }
