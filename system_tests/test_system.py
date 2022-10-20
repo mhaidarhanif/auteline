@@ -2,7 +2,7 @@ import pexpect
 
 def test_systemTest():
     # Spawn the test via gradle.
-    child = pexpect.spawn('gradle run -q', timeout=360)
+    child = pexpect.spawn('gradle run -q', timeout=1024)
 
     child.expect_exact('[i] Welcome to Auteline Bank ATM!')
     print (child.after)
