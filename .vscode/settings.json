@@ -1,5 +1,5 @@
 {
     "gradle.debug": true,
     "java.import.gradle.java.home": "/usr/lib/jvm/msopenjdk-current/",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

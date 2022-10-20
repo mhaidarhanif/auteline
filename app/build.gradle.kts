@@ -15,6 +15,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
     id("io.qameta.allure") version "2.11.0"
+    id("jacoco")
 }
 
 
@@ -31,3 +32,12 @@ application {
 tasks.named<JavaExec>("run") {
     standardInput = System.`in`
 }
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+    }
+}
+
+
