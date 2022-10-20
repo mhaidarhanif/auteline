@@ -23,3 +23,9 @@ jobs:
       with: 
         name: Release
         path: ./app/build/libs/autelineATM.jar
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ./app/build/libs/autelineATM.jar
