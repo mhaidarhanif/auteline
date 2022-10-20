@@ -15,6 +15,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
     id("io.qameta.allure") version "2.11.0"
+    id("io.ktor.plugin") version "2.1.2"
 }
 
 
@@ -30,4 +31,10 @@ application {
 
 tasks.named<JavaExec>("run") {
     standardInput = System.`in`
+}
+
+ktor {
+    fatJar {
+        archiveFileName.set("autelineATM.jar")
+    }
 }
