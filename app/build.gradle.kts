@@ -15,6 +15,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
     id("io.qameta.allure") version "2.11.0"
+    id("jacoco")
     id("io.ktor.plugin") version "2.1.2"
 }
 
@@ -22,6 +23,7 @@ plugins {
 dependencies {
     // Use JUnit test framework.
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:3.+")
 }
 
 application {
@@ -32,6 +34,14 @@ application {
 tasks.named<JavaExec>("run") {
     standardInput = System.`in`
 }
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+    }
+}
+
 
 ktor {
     fatJar {
