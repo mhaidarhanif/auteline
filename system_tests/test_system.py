@@ -1,6 +1,6 @@
 import pexpect 
 
-def test_systemTest():
+def __helper_getTotalBalance() -> pexpect.spawn:
     # Spawn the test via gradle.
     child = pexpect.spawn('gradle run -q', timeout=360)
 
@@ -37,7 +37,30 @@ def test_systemTest():
     child.expect(r'\$\d\,\d\d\d\.\d\d')
     print (child.after)
 
-    child.kill(0)
+    return child
+
+def __helper_exit(child: pexpect.spawn) -> pexpect.spawn:
+    child.expect_exact("[Main menu]\r\n\
+1 - View my balance\r\n\
+2 - Withdraw cash\r\n\
+3 - Deposit funds\r\n\
+9 - Cole's Favorite Lunch\r\n\
+52 - Gavin's Favorite Lunch\r\n\
+53 - Emil's Favorite Lunch\r\n\
+62 - Justin's Favorite Lunch\r\n\
+4 - Exit")
+    child.sendline('4')
+    return child
     
+
+def test_basic():
+    child: pexpect.spawn = __helper_getTotalBalance()
+    
+    child.kill(0)
     assert child.exitstatus == None
 
+def test_exit():
+    child: pexpect.spawn = __helper_getTotalBalance()
+    child = __helper_exit(child)
+
+    assert child.exitstatus == None
