@@ -21,6 +21,7 @@ def test_systemTest():
 3 - Deposit funds\r\n\
 9 - Cole's Favorite Lunch\r\n\
 52 - Gavin's Favorite Lunch\r\n\
+53 - Emil's Favorite Lunch\r\n\
 62 - Justin's Favorite Lunch\r\n\
 4 - Exit")
     print (child.after)
