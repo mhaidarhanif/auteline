@@ -1,0 +1,12 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run test report",
+            "type": "shell",
+            "command": "gradle test && gradle jacocoTestReport && python3 -m http.server -d ${workspaceFolder}/app/build/reports/jacoco/test/html"
+        }
+    ]
+}
