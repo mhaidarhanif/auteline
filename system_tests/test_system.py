@@ -19,10 +19,6 @@ def __helper_getTotalBalance() -> pexpect.spawn:
 1 - View my balance\r\n\
 2 - Withdraw cash\r\n\
 3 - Deposit funds\r\n\
-9 - Cole's Favorite Lunch\r\n\
-52 - Gavin's Favorite Lunch\r\n\
-53 - Emil's Favorite Lunch\r\n\
-62 - Justin's Favorite Lunch\r\n\
 4 - Exit")
     print (child.after)
 
@@ -44,10 +40,6 @@ def __helper_exit(child: pexpect.spawn) -> pexpect.spawn:
 1 - View my balance\r\n\
 2 - Withdraw cash\r\n\
 3 - Deposit funds\r\n\
-9 - Cole's Favorite Lunch\r\n\
-52 - Gavin's Favorite Lunch\r\n\
-53 - Emil's Favorite Lunch\r\n\
-62 - Justin's Favorite Lunch\r\n\
 4 - Exit")
     child.sendline('4')
     return child
