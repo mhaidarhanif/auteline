@@ -17,6 +17,7 @@ plugins {
     id("io.qameta.allure") version "2.11.0"
     id("jacoco")
     id("io.ktor.plugin") version "2.1.2"
+    id("org.sonarqube") version "3.4.0.2513"
 }
 
 
@@ -47,4 +48,10 @@ ktor {
     fatJar {
         archiveFileName.set("autelineATM.jar")
     }
+}
+
+sonarqube {
+  properties {
+    property("sonar.projectKey", "ehharvey_auteline_AYQ-I0YI_yDQdcQuYvYl")
+  }
 }
