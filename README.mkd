@@ -1,4 +1,5 @@
 # Auteline
+![Image](https://sqiii-sonarqube.emilharvey.ca/api/project_badges/measure?project=ehharvey_auteline_AYRIQL5AHRjEj3eT5g-_&metric=alert_status&token=28a8c39d5a8d0968cf6286dce6f294c2c6364f4a)
 
 ![Screenshot](./assets/screenshot.png)
 
