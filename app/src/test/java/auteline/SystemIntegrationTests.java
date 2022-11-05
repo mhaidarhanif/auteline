@@ -5,17 +5,28 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.InputMismatchException;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class SystemIntegrationTests {
+    // Mocked classes (ATM's dependencies)
     Keypad mockKeypad = mock(Keypad.class);
     Screen mockScreen = mock(Screen.class);
 
+    // Real production classes (ATM's dependencies)
     CashDispenser cashDispenser = new CashDispenser();
     DepositSlot depositSlot = new DepositSlot();
     BankDatabase bankDatabase = new BankDatabase();
 
+    // Classes that are indirectly tested
+    // - Account (all tests)
+    // - BalanceInquiry (SIT001 & SIT002)
+    // - Transaction (SIT003 and SIT004)
+    // - Withdrawal (SIT003 and SIT004)
+
+    // Tested class (also production)
     ATM atm;
 
     @Before
@@ -35,18 +46,23 @@ public class SystemIntegrationTests {
         verify(mockScreen, times(1)).displayDollarAmount(1000.0);
     }
 
-    // TODO
-    // @Test
-    // public void SIT002_getBalanceWrongMenuInput() {
-    //     // Arrange
-    //     when(mockKeypad.getInput()).thenReturn(12345, 54321, 5, 4);
 
-    //     // Act
-    //     atm.run();
+    @Test
+    // Authenticating
+    // Viewing balance (enter input, contact database)
+    public void SIT002_getBalanceWrongMenuInput() {
+        // Arrange
+        when(mockKeypad.getInput())
+            .thenReturn(12345, 54321)                 // Login
+            .thenThrow(InputMismatchException.class)    // Simulates non-integer input
+            .thenReturn(4);     // Exit command
 
-    //     // Assert
-    //     verify(mockScreen, times(1)).displayMessage(null);(1000.0);
-    // }
+        // Act
+        atm.run();
+
+        // Assert
+        verify(mockScreen, times(1)).displayMessageLine("Please enter an integer number.");
+    }
 
     @Test
     public void SIT003_withdraw100Dollars() {
