@@ -52,6 +52,6 @@ ktor {
 
 sonarqube {
   properties {
-    property("sonar.projectKey", "ehharvey_auteline_AYRINEd2HRjEj3eT5g-O")
+    property("sonar.projectKey", "ehharvey_auteline_AYRIQL5AHRjEj3eT5g-_")
   }
 }
