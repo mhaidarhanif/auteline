@@ -13,7 +13,14 @@ public class ATMTest {
 
   // main method creates and runs the ATM
   public static void main(String[] args) {
-    ATM mobileATM = new ATM();
+    Screen screen = new Screen();
+    Keypad keypad = new Keypad();
+    CashDispenser cashDispenser = new CashDispenser();
+    DepositSlot depositSlot = new DepositSlot();
+    BankDatabase bankDatabase = new BankDatabase();
+
+    ATM mobileATM = new ATM(screen, keypad, cashDispenser, 
+                            depositSlot, bankDatabase);
     mobileATM.run();
   }
 

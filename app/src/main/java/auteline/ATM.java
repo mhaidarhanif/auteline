@@ -1,5 +1,7 @@
 package auteline;
 
+import java.util.InputMismatchException;
+
 /**
  * SMTI06, 54411850, M Haidar Hanif Task Five: Automated Teller Machine Auteline | Simple ATM
  * simulator with basic features
@@ -25,14 +27,15 @@ public class ATM {
   private static final int EXIT = 4;
 
   // no-argument ATM constructor initializes instance variables
-  public ATM() {
+  public ATM(Screen atmScreen, Keypad atmKeypad, CashDispenser atmCashDispenser, 
+             DepositSlot atmDepositSlot, BankDatabase atmBankDatabase) {
     userAuthenticated = false; // user is not authenticated to start
     currentAccountNumber = 0; // no current account number to start
-    screen = new Screen(); // create screen
-    keypad = new Keypad(); // create keypad
-    cashDispenser = new CashDispenser(); // create cash dispenser
-    depositSlot = new DepositSlot(); // create deposit slot
-    bankDatabase = new BankDatabase(); // create acct info database
+    screen = atmScreen; // create screen
+    keypad = atmKeypad; // create keypad
+    cashDispenser = atmCashDispenser; // create cash dispenser
+    depositSlot = atmDepositSlot; // create deposit slot
+    bankDatabase = atmBankDatabase; // create acct info database
   }
 
   // start ATM
@@ -106,7 +109,15 @@ public class ATM {
     screen.displayMessageLine("3 - Deposit funds");
     screen.displayMessageLine("4 - Exit\n");
     screen.displayMessage("[?] Enter a choice: ");
-    return keypad.getInput(); // return user's selection
+
+    try {
+      return keypad.getInput();
+
+    } catch (InputMismatchException e) {
+      screen.displayMessageLine("Please enter an integer number.");
+      
+      return displayMainMenu();
+    }
   }
 
   // return object of specified Transaction subclass
