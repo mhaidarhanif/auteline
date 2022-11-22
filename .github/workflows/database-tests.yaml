@@ -30,4 +30,4 @@ jobs:
           pip install pytest
           pip install -r ./database_tests/requirements.txt
       - name: Test
-        run: SQL_PASSWORD=${{ SQL_PASSWORD }} python ./database-tests/test.py
+        run: SQL_PASSWORD=${{ secrets.SQL_PASSWORD }} python ./database-tests/test.py
